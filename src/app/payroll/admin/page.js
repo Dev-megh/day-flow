@@ -13,8 +13,8 @@ export default function AdminPayrollPage() {
 
         <nav className="px-4 space-y-2">
           <NavItem label="Dashboard" href="/dashboard/admin" />
-          <NavItem label="Employees" href="/dashboard/employee" />
-          <NavItem label="Attendance" href="/dashboard/attendance" />
+          <NavItem label="Employees" href="/dashboard/admin" />
+          <NavItem label="Attendance" href="/attendance/admin" />
           <NavItem
             label="Payroll"
             href="/dashboard/payroll/admin"

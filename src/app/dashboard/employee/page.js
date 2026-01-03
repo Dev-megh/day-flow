@@ -7,7 +7,7 @@ export default function EmployeeDashboardPage() {
 
         <nav className="px-4 space-y-2">
           <NavItem label="Dashboard" active  href="/dashboard/employee"/>
-          <NavItem label="My Attendance" href="/attendance" />
+          <NavItem label="My Attendance" href="/attendance/employee" />
           <NavItem label="My Leaves" href="/leave/apply" />
           <NavItem label="Profile" href=""/>
         </nav>
