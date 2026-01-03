@@ -5,8 +5,6 @@ export default function LeaveAdminListPage() {
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
       <AdminSide screen="leaves" />
       <div className="flex-1">
-        <Header title="Leave Requests" />
-
         <section className="p-6 max-w-6xl mx-auto">
           <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
             <table className="w-full text-sm">
@@ -45,14 +43,6 @@ export default function LeaveAdminListPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-function Header({ title }) {
-  return (
-    <header className="px-6 py-4 border-b border-white/10 bg-white/5">
-      <h1 className="text-xl font-semibold">{title}</h1>
-    </header>
   );
 }
 
