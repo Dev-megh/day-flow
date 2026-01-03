@@ -8,7 +8,6 @@ export async function GET(req) {
     if (!session) return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
 
     if (session.user.role === "ADMIN") {
-      // Admin gets all payroll
       const payroll = await prisma.payroll.findMany({
         include: {
           user: {
@@ -19,7 +18,6 @@ export async function GET(req) {
       });
       return new Response(JSON.stringify(payroll), { status: 200 });
     } else {
-      // Employee gets only their own payroll
       const payroll = await prisma.payroll.findMany({
         where: { userId: parseInt(session.user.id) },
         orderBy: { createdAt: "desc" },
@@ -53,14 +51,12 @@ export async function POST(req) {
       );
     }
 
-    // Get user's attendance for the month
     const year = paymentYear;
     const month = paymentMonth;
 
     const startDate = new Date(year, month - 1, 1);
     const endDate = new Date(year, month, 0);
 
-    // Calculate working days (Mon-Fri only)
     let workingDays = 0;
     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
       const day = d.getDay();
@@ -69,7 +65,6 @@ export async function POST(req) {
       }
     }
 
-    // Get attendance records
     const attendances = await prisma.attendance.findMany({
       where: {
         userId: userId,

@@ -1,4 +1,4 @@
-const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const WEEK_DAYS = ["Sat", "Mon", "Tue", "Wed", "Thu", "Fri"];
 const MONTH_NAMES = [
   "Jan","Feb","Mar","Apr","May","Jun",
   "Jul","Aug","Sep","Oct","Nov","Dec"
