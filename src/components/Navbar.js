@@ -1,43 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const { data: session, status } = useSession();
   const pathname = usePathname();
 
-  // Mock auth state (replace later)
-  const [user, setUser] = useState({
-    name: "John Doe",
-    role: "EMPLOYEE", // ADMIN | EMPLOYEE | null
-  });
-
-  const isLoggedIn = !!user;
-  const isAdmin = user?.role === "ADMIN";
-  const isEmployee = user?.role === "EMPLOYEE";
+  const isAdmin = session?.user?.role === "ADMIN";
+  const isEmployee = session?.user?.role === "EMPLOYEE";
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0B0F1A]/85 backdrop-blur border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-semibold tracking-tight text-indigo-400"
-        >
+        <Link href="/" className="text-xl font-semibold tracking-tight text-indigo-400">
           DayFlow
         </Link>
 
-        {/* Center Nav */}
         <div className="hidden md:flex items-center gap-2 text-sm">
-          {!isLoggedIn && (
+          {status === "unauthenticated" && (
             <>
               <NavLink href="#features" active={pathname === "/"}>
                 Features
               </NavLink>
-              <NavLink href="/login">Login</NavLink>
-              <NavLink href="/signup" highlight>
+              <NavLink href="/auth/signin">Login</NavLink>
+              <NavLink href="/auth/signup" highlight>
                 Get Started
               </NavLink>
             </>
@@ -45,22 +33,13 @@ export default function Navbar() {
 
           {isEmployee && (
             <>
-              <NavLink
-                href="/employee/dashboard"
-                active={pathname.startsWith("/employee/dashboard")}
-              >
+              <NavLink href="/dashboard/employee" active={pathname.startsWith("/dashboard/employee")}>
                 Dashboard
               </NavLink>
-              <NavLink
-                href="/attendance"
-                active={pathname.startsWith("/attendance")}
-              >
+              <NavLink href="/attendance" active={pathname.startsWith("/attendance")}>
                 Attendance
               </NavLink>
-              <NavLink
-                href="/employee/leave-request"
-                active={pathname.startsWith("/employee/leave-request")}
-              >
+              <NavLink href="/leave/apply" active={pathname.startsWith("/leave/apply")}>
                 Leave
               </NavLink>
             </>
@@ -68,39 +47,30 @@ export default function Navbar() {
 
           {isAdmin && (
             <>
-              <NavLink href="/admin/dashboard">Admin</NavLink>
-              <NavLink href="/admin/attendance">Attendance</NavLink>
+              <NavLink href="/dashboard/admin">Admin</NavLink>
+              <NavLink href="/attendance">Attendance</NavLink>
               <NavLink href="/admin/leaves">Leaves</NavLink>
               <NavLink href="/admin/employees">Employees</NavLink>
             </>
           )}
         </div>
 
-        {/* Right User Area */}
         <div className="flex items-center gap-3">
-          {isLoggedIn ? (
+          {session ? (
             <>
-              {/* Avatar */}
               <div className="w-8 h-8 rounded-full bg-indigo-600/30 text-indigo-300 flex items-center justify-center text-sm font-medium">
-                {user.name[0]}
+                {session.user.name[0]}
               </div>
-
-              <span className="hidden sm:block text-sm text-gray-400">
-                {user.name}
-              </span>
-
+              <span className="hidden sm:block text-sm text-gray-400">{session.user.name}</span>
               <button
-                onClick={() => setUser(null)}
+                onClick={() => signOut({ callbackUrl: "/" })}
                 className="text-sm px-3 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition"
               >
                 Logout
               </button>
             </>
           ) : (
-            <Link
-              href="/login"
-              className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition"
-            >
+            <Link href="/auth/signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
               Login
             </Link>
           )}
@@ -109,8 +79,6 @@ export default function Navbar() {
     </nav>
   );
 }
-
-/* ---------- NavLink ---------- */
 
 function NavLink({ href, children, highlight, active }) {
   return (
