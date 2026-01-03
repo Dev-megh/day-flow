@@ -53,6 +53,8 @@ model Attendance {
   checkIn   DateTime?
   checkOut  DateTime?
   status    AttendanceStatus
+
+  @@unique([userId, date])
 }
 
 model Leave {

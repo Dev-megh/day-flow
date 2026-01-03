@@ -3,21 +3,29 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
-export async function PATCH(request, { params }) {
+export async function POST(request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || session.user.role !== "ADMIN") {
+    if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { status } = await request.json();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    const leave = await prisma.leave.update({
-      where: { id: parseInt(params.id) },
-      data: { status },
+    const attendance = await prisma.attendance.update({
+      where: {
+        userId_date: {
+          userId: parseInt(session.user.id),
+          date: today,
+        },
+      },
+      data: {
+        checkOut: new Date(),
+      },
     });
 
-    return NextResponse.json(leave);
+    return NextResponse.json(attendance);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
