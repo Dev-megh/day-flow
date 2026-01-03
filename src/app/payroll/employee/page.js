@@ -1,6 +1,6 @@
 "use client";
 
-import NavItems from "../../../components/NavItems";
+import NavItem from "../../../components/NavItem";
 
 export default function EmployeePayrollPage() {
   return (
@@ -10,9 +10,9 @@ export default function EmployeePayrollPage() {
         <div className="p-6 text-2xl font-bold text-indigo-400">DayFlow</div>
 
         <nav className="px-4 space-y-2">
-          <NavItems label="Dashboard" href="/dashboard/employee" />
-          <NavItems label="Payroll" href="/dashboard/payroll/employee" active />
-          <NavItems label="Profile" href="/dashboard/profile" />
+          <NavItem label="Dashboard" href="/dashboard/employee" />
+          <NavItem label="Payroll" href="/dashboard/payroll/employee" active />
+          <NavItem label="Profile" href="/dashboard/profile" />
         </nav>
       </aside>
 

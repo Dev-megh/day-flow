@@ -62,7 +62,7 @@ export default function Navbar() {
               <Link href="signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
                 Login
               </Link>
-              <Link href="signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
+              <Link href="signup" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
                 Sign Up
               </Link>
             </div>

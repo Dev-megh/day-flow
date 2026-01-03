@@ -1,6 +1,6 @@
 "use client";
 
-import NavItem from "@/components/NavItems";
+import NavItem from "@/components/NavItem";
 
 export default function AdminPayrollPage() {
   return (

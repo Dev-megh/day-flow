@@ -11,6 +11,7 @@ export default function SignupPage() {
     email: "",
     password: "",
     role: "EMPLOYEE",
+    name: "",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -73,6 +74,19 @@ export default function SignupPage() {
               value={formData.employeeId}
               onChange={handleChange}
               placeholder="EMP001"
+              className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm mb-2">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="John Doe"
               className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />

@@ -1,23 +1,9 @@
-import NavItems from "../../../components/NavItems";
+import AdminSide from "@/components/AdminSide";
+import NavItem from "../../../components/NavItem";
 export default function AdminDashboardPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
-      <aside className="w-64 bg-white/5 border-r border-white/10 hidden md:block">
-        <div className="p-6 text-2xl font-bold text-indigo-400">DayFlow</div>
-
-        <nav className="px-4 space-y-2">
-          <NavItems label="Dashboard" href="/dashboard/admin" active />
-
-          <NavItems label="Employees" href="/dashboard/admin" />
-
-          <NavItems label="Attendance" href="/attendance" />
-
-          <NavItems label="Leaves" href="/leave/admin/list" />
-
-          <NavItems label="Payroll" href="/payroll/admin" />
-        </nav>
-      </aside>
-
+      <AdminSide />
       <div className="flex-1">
         <Header title="Admin Dashboard" />
 
@@ -39,18 +25,6 @@ export default function AdminDashboardPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-function NavItem({ label, active }) {
-  return (
-    <div
-      className={`px-4 py-2 rounded-lg cursor-pointer transition ${
-        active ? "bg-indigo-600 text-white" : "hover:bg-white/10 text-gray-300"
-      }`}
-    >
-      {label}
-    </div>
   );
 }
 

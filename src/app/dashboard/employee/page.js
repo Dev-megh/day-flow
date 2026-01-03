@@ -1,4 +1,4 @@
-import NavItems from "../../../components/NavItems";
+import NavItem from "../../../components/NavItem";
 export default function EmployeeDashboardPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
@@ -6,10 +6,10 @@ export default function EmployeeDashboardPage() {
         <div className="p-6 text-2xl font-bold text-indigo-400">DayFlow</div>
 
         <nav className="px-4 space-y-2">
-          <NavItems label="Dashboard" active  href="/dashboard/employee"/>
-          <NavItems label="My Attendance" href="/attendance" />
-          <NavItems label="My Leaves" href="/leave/apply" />
-          <NavItems label="Profile" href=""/>
+          <NavItem label="Dashboard" active  href="/dashboard/employee"/>
+          <NavItem label="My Attendance" href="/attendance" />
+          <NavItem label="My Leaves" href="/leave/apply" />
+          <NavItem label="Profile" href=""/>
         </nav>
       </aside>
 
@@ -34,19 +34,6 @@ export default function EmployeeDashboardPage() {
     </main>
   );
 }
-
-function NavItem({ label, active }) {
-  return (
-    <div
-      className={`px-4 py-2 rounded-lg cursor-pointer transition ${
-        active ? "bg-indigo-600 text-white" : "hover:bg-white/10 text-gray-300"
-      }`}
-    >
-      {label}
-    </div>
-  );
-}
-
 function Header({ title }) {
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">

@@ -1,3 +1,5 @@
+import NavItem from "@/components/NavItem";
+
 export default function LeaveAdminViewPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
@@ -53,18 +55,6 @@ function Header({ title }) {
     <header className="px-6 py-4 border-b border-white/10 bg-white/5">
       <h1 className="text-xl font-semibold">{title}</h1>
     </header>
-  );
-}
-
-function NavItem({ label, active }) {
-  return (
-    <div
-      className={`px-4 py-2 rounded-lg cursor-pointer transition ${
-        active ? "bg-indigo-600 text-white" : "hover:bg-white/10 text-gray-300"
-      }`}
-    >
-      {label}
-    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function NavItems({ label, href, active }) {
+export default function NavItem({ label, href, active }) {
   return (
     <Link
       href={href}
