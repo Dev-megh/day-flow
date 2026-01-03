@@ -3,22 +3,23 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
-export async function PATCH(request, { params }) {
+export async function GET(request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || session.user.role !== "ADMIN") {
+    if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { status } = await request.json();
+    const userId = parseInt(session.user.id);
 
-    const leave = await prisma.leave.update({
-      where: { id: parseInt(params.id) },
-      data: { status },
+    const leaves = await prisma.leave.findMany({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
     });
 
-    return NextResponse.json(leave);
+    return NextResponse.json(leaves);
   } catch (error) {
+    console.error("Fetch leaves error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

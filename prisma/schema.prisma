@@ -43,6 +43,9 @@ model User {
   payroll     Payroll?
   address     String
   phone       String
+  leaves          Leave[]
+  approvedLeaves  Leave[]         @relation("LeaveApprover")
+  leaveComments   LeaveComment[]  @relation("LeaveComments")
 }
 
 model Attendance {
@@ -53,17 +56,44 @@ model Attendance {
   checkIn   DateTime?
   checkOut  DateTime?
   status    AttendanceStatus
+
+  @@unique([userId, date])
 }
 
 model Leave {
-  id      Int         @id @default(autoincrement())
-  userId  Int
-  user    User        @relation(fields: [userId], references: [id])
-  type    LeaveType
-  from    DateTime
-  to      DateTime
-  status  LeaveStatus
-  reason  String?
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  leaveType       String   // CASUAL, SICK, EARNED, UNPAID
+  startDate       DateTime
+  endDate         DateTime
+  totalDays       Float
+  isHalfDay       Boolean  @default(false)
+  reason          String
+  
+  status          String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  approverComment String?
+  approverId      Int?
+  approver        User?    @relation("LeaveApprover", fields: [approverId], references: [id])
+  approvedAt      DateTime?
+  
+  comments        LeaveComment[]
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model LeaveComment {
+  id        Int      @id @default(autoincrement())
+  leaveId   Int
+  leave     Leave    @relation(fields: [leaveId], references: [id], onDelete: Cascade)
+  
+  userId    Int
+  user      User     @relation("LeaveComments", fields: [userId], references: [id])
+  
+  text      String
+  createdAt DateTime @default(now())
 }
 
 model Payroll {
