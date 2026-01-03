@@ -4,6 +4,12 @@ const bcrypt = require("bcrypt");
 const prisma = new PrismaClient();
 
 async function main() {
+  // Clear existing data
+  await prisma.payroll.deleteMany({});
+  await prisma.attendance.deleteMany({});
+  await prisma.leave.deleteMany({});
+  await prisma.user.deleteMany({});
+
   const hashedPassword = await bcrypt.hash("password123", 10);
 
   // Admin
