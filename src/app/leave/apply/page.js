@@ -1,7 +1,11 @@
+import EmployeeSide from "@/components/EmployeeSide";
+
 export default function LeaveRequestPage() {
   return (
-    <main className="min-h-screen bg-[#0B0F1A] text-gray-200 px-6 py-14">
-      <div className="max-w-5xl mx-auto">
+    <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
+      <EmployeeSide screen="leave" />
+      <div className="flex-1">
+        <section className="p-6 max-w-6xl mx-auto">
 
         <div className="mb-10">
           <h1 className="text-3xl font-bold mb-2">
@@ -142,7 +146,7 @@ export default function LeaveRequestPage() {
             </table>
           </div>
         </div>
-
+      </section>
       </div>
     </main>
   );
