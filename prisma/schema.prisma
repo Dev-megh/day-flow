@@ -41,6 +41,8 @@ model User {
   attendances Attendance[]
   leaves      Leave[]
   payroll     Payroll?
+  address     String
+  phone       String
 }
 
 model Attendance {
