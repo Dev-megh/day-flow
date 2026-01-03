@@ -5,9 +5,7 @@ export default function SignUp() {
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/10 to-cyan-600/20 blur-3xl" />
 
       <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl">
-        <h1 className="text-3xl font-bold text-center mb-2">
-          Create Account
-        </h1>
+        <h1 className="text-3xl font-bold text-center mb-2">Create Account</h1>
         <p className="text-gray-400 text-center mb-8">
           Start managing your HR with DayFlow
         </p>
@@ -50,7 +48,7 @@ export default function SignUp() {
 
         <p className="text-sm text-gray-400 text-center mt-6">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-400 hover:underline">
+          <a href="/auth/signin" className="text-indigo-400 hover:underline">
             Sign in
           </a>
         </p>

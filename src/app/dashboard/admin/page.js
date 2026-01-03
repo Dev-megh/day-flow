@@ -1,22 +1,24 @@
+import NavItems from "../../../components/NavItems";
 export default function AdminDashboardPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
-      {/* Sidebar */}
       <aside className="w-64 bg-white/5 border-r border-white/10 hidden md:block">
-        <div className="p-6 text-2xl font-bold text-indigo-400">
-          DayFlow
-        </div>
+        <div className="p-6 text-2xl font-bold text-indigo-400">DayFlow</div>
 
         <nav className="px-4 space-y-2">
-          <NavItem label="Dashboard" active />
-          <NavItem label="Employees" />
-          <NavItem label="Attendance" />
-          <NavItem label="Leaves" />
-          <NavItem label="Payroll" />
-          <NavItem label="Settings" />
+          <NavItems label="Dashboard" href="/dashboard/admin" active />
+
+          <NavItems label="Employees" href="/dashboard/employee" />
+
+          <NavItems label="Attendance" href="/attendance" />
+
+          <NavItems label="Leaves" href="/leave/admin/list" />
+
+          <NavItems label="Payroll" href="/payroll" />
+
+          <NavItems label="Settings" href="/settings" />
         </nav>
       </aside>
-
 
       <div className="flex-1">
         <Header title="Admin Dashboard" />
