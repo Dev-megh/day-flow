@@ -11,6 +11,7 @@ const EmployeeSide = ({screen}) => {
           <NavItem label="My Attendance" href="/attendance/employee" active={screen === "attendance"} />
           <NavItem label="My Leaves" href="/leave/apply" active={screen === "leave"} />
           <NavItem label="Profile" href="/profile" active={screen === "profile"} />
+          <NavItem label="Payroll" href="/payroll/employee" active={screen === "payroll"} />
         </nav>
       </aside>
   )

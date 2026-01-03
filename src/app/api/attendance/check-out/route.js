@@ -10,15 +10,19 @@ export async function POST(request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const userId = parseInt(session.user.id);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-
-    const userId = parseInt(session.user.id);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
 
     const attendance = await prisma.attendance.findFirst({
       where: {
         userId,
-        date: today,
+        date: {
+          gte: today,
+          lt: tomorrow,
+        },
       },
     });
 

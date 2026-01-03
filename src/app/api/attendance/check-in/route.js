@@ -10,44 +10,33 @@ export async function POST(request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const userId = parseInt(session.user.id);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
 
-    const userId = parseInt(session.user.id);
-
-    // Verify user exists
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-    });
-
-    if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
-    }
-
-    // Check if record exists for today
+    // Check if already checked in
     const existingRecord = await prisma.attendance.findFirst({
       where: {
         userId,
-        date: today,
+        date: {
+          gte: today,
+          lt: tomorrow,
+        },
       },
     });
 
     let attendance;
 
     if (existingRecord) {
-      // Update existing record
       attendance = await prisma.attendance.update({
         where: { id: existingRecord.id },
         data: {
           checkIn: new Date(),
-          status: "PRESENT",
         },
       });
     } else {
-      // Create new record
       attendance = await prisma.attendance.create({
         data: {
           userId,
