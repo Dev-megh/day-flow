@@ -13,24 +13,12 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0B0F1A]/85 backdrop-blur border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="w-full px-16 h-16 flex items-center justify-between">
         <Link href="/" className="text-xl font-semibold tracking-tight text-indigo-400">
           DayFlow
         </Link>
 
         <div className="hidden md:flex items-center gap-2 text-sm">
-          {status === "unauthenticated" && (
-            <>
-              <NavLink href="#features" active={pathname === "/"}>
-                Features
-              </NavLink>
-              <NavLink href="/auth/signin">Login</NavLink>
-              <NavLink href="/auth/signup" highlight>
-                Get Started
-              </NavLink>
-            </>
-          )}
-
           {isEmployee && (
             <>
               <NavLink href="/dashboard/employee" active={pathname.startsWith("/dashboard/employee")}>
@@ -70,7 +58,7 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <Link href="/auth/signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
+            <Link href="signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
               Login
             </Link>
           )}

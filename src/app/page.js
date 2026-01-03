@@ -23,7 +23,7 @@ export default function Home() {
 
           <div className="flex gap-4">
             <a
-              href="/auth/signin"
+              href="signin"
               className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-semibold transition shadow-lg shadow-indigo-600/30"
             >
               Get Started
@@ -118,7 +118,7 @@ export default function Home() {
           Focus on people let DayFlow handle the process.
         </p>
         <a
-          href="/auth/signin"
+          href="signin"
           className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
         >
           Launch DayFlow

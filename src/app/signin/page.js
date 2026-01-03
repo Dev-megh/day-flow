@@ -1,11 +1,12 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function SignIn() {
   const router = useRouter();
+  const {data: session} = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,7 +27,11 @@ export default function SignIn() {
       setError(result.error);
       setLoading(false);
     } else {
-      router.push("/dashboard/employee");
+      if (session?.user?.role === "ADMIN") {
+        router.push("/dashboard/admin");
+      } else {
+        router.push("/dashboard/employee");
+      }
     }
   };
 
@@ -77,13 +82,6 @@ export default function SignIn() {
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-
-        <p className="text-sm text-gray-400 text-center mt-6">
-          Don't have an account?{" "}
-          <a href="/auth/auth/signup" className="text-indigo-400 hover:underline">
-            Sign up
-          </a>
-        </p>
       </div>
     </main>
   );
