@@ -13,27 +13,57 @@ export async function POST(request) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const attendance = await prisma.attendance.upsert({
+    const userId = parseInt(session.user.id);
+
+    // Verify user exists
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { error: "User not found" },
+        { status: 404 }
+      );
+    }
+
+    // Check if record exists for today
+    const existingRecord = await prisma.attendance.findFirst({
       where: {
-        userId_date: {
-          userId: parseInt(session.user.id),
-          date: today,
-        },
-      },
-      update: {
-        checkIn: new Date(),
-        status: "PRESENT",
-      },
-      create: {
-        userId: parseInt(session.user.id),
+        userId,
         date: today,
-        checkIn: new Date(),
-        status: "PRESENT",
       },
     });
 
+    let attendance;
+
+    if (existingRecord) {
+      // Update existing record
+      attendance = await prisma.attendance.update({
+        where: { id: existingRecord.id },
+        data: {
+          checkIn: new Date(),
+          status: "PRESENT",
+        },
+      });
+    } else {
+      // Create new record
+      attendance = await prisma.attendance.create({
+        data: {
+          userId,
+          date: today,
+          checkIn: new Date(),
+          status: "PRESENT",
+        },
+      });
+    }
+
     return NextResponse.json(attendance, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("Check-in error:", error);
+    return NextResponse.json(
+      { error: error.message || "Check-in failed" },
+      { status: 500 }
+    );
   }
 }

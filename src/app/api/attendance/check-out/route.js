@@ -13,20 +13,35 @@ export async function POST(request) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const attendance = await prisma.attendance.update({
+    const userId = parseInt(session.user.id);
+
+    const attendance = await prisma.attendance.findFirst({
       where: {
-        userId_date: {
-          userId: parseInt(session.user.id),
-          date: today,
-        },
+        userId,
+        date: today,
       },
+    });
+
+    if (!attendance) {
+      return NextResponse.json(
+        { error: "No check-in found for today" },
+        { status: 400 }
+      );
+    }
+
+    const updated = await prisma.attendance.update({
+      where: { id: attendance.id },
       data: {
         checkOut: new Date(),
       },
     });
 
-    return NextResponse.json(attendance);
+    return NextResponse.json(updated);
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("Check-out error:", error);
+    return NextResponse.json(
+      { error: error.message || "Check-out failed" },
+      { status: 500 }
+    );
   }
 }

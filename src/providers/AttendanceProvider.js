@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 
 const AttendanceContext = createContext();
@@ -11,31 +11,33 @@ export function AttendanceProvider({ children }) {
   const [checkInTime, setCheckInTime] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch current attendance status on mount
-  useEffect(() => {
+  const fetchAttendanceStatus = useCallback(async () => {
     if (!session?.user?.id) {
       setLoading(false);
       return;
     }
 
-    const fetchAttendanceStatus = async () => {
-      try {
-        const response = await fetch("/api/attendance/status");
-        const data = await response.json();
-        
-        if (data.checkedIn) {
-          setCheckedIn(true);
-          setCheckInTime(new Date(data.checkInTime));
-        }
-      } catch (error) {
-        console.error("Failed to fetch attendance status:", error);
-      } finally {
-        setLoading(false);
+    try {
+      const response = await fetch("/api/attendance/status");
+      const data = await response.json();
+      
+      if (data.checkedIn) {
+        setCheckedIn(true);
+        setCheckInTime(new Date(data.checkInTime));
+      } else {
+        setCheckedIn(false);
+        setCheckInTime(null);
       }
-    };
-
-    fetchAttendanceStatus();
+    } catch (error) {
+      console.error("Failed to fetch attendance status:", error);
+    } finally {
+      setLoading(false);
+    }
   }, [session?.user?.id]);
+
+  useEffect(() => {
+    fetchAttendanceStatus();
+  }, [session?.user?.id, fetchAttendanceStatus]);
 
   const checkIn = async () => {
     try {
@@ -43,16 +45,13 @@ export function AttendanceProvider({ children }) {
       const response = await fetch("/api/attendance/check-in", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ date: new Date().toISOString() }),
       });
 
       if (response.ok) {
-        setCheckedIn(true);
-        setCheckInTime(new Date());
+        await fetchAttendanceStatus();
       }
     } catch (error) {
       console.error("Check-in failed:", error);
-    } finally {
       setLoading(false);
     }
   };
@@ -63,16 +62,13 @@ export function AttendanceProvider({ children }) {
       const response = await fetch("/api/attendance/check-out", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ date: new Date().toISOString() }),
       });
 
       if (response.ok) {
-        setCheckedIn(false);
-        setCheckInTime(null);
+        await fetchAttendanceStatus();
       }
     } catch (error) {
       console.error("Check-out failed:", error);
-    } finally {
       setLoading(false);
     }
   };
