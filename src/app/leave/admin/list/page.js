@@ -3,7 +3,7 @@ import AdminSide from "@/components/AdminSide";
 export default function LeaveAdminListPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
-      <AdminSide />
+      <AdminSide screen="leaves" />
       <div className="flex-1">
         <Header title="Leave Requests" />
 
