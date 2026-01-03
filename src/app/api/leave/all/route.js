@@ -24,7 +24,7 @@ export async function GET(request) {
           select: { id: true, name: true, email: true, employeeId: true },
         },
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: { id: "desc" },
     });
 
     return NextResponse.json(leaves);

@@ -14,7 +14,7 @@ export async function GET(request) {
 
     const leaves = await prisma.leave.findMany({
       where: { userId },
-      orderBy: { createdAt: "desc" },
+      orderBy: { id: "desc" },
     });
 
     return NextResponse.json(leaves);

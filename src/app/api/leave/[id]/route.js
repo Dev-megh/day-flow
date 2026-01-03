@@ -10,8 +10,11 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const { id } = await params;
+    const leaveId = parseInt(id);
+
     const leave = await prisma.leave.findUnique({
-      where: { id: parseInt(params.id) },
+      where: { id: leaveId },
       include: {
         user: {
           select: { id: true, name: true, email: true, employeeId: true },
@@ -22,7 +25,7 @@ export async function GET(request, { params }) {
               select: { id: true, name: true },
             },
           },
-          orderBy: { createdAt: "desc" },
+          orderBy: { id: "desc" },
         },
       },
     });
@@ -73,8 +76,11 @@ export async function PATCH(request, { params }) {
       );
     }
 
+    const { id } = await params;
+    const leaveId = parseInt(id);
+
     const leave = await prisma.leave.update({
-      where: { id: parseInt(params.id) },
+      where: { id: leaveId },
       data: {
         status,
         approverComment,

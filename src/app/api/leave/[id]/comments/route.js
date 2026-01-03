@@ -11,10 +11,12 @@ export async function POST(request, { params }) {
     }
 
     const { text } = await request.json();
+    const { id } = await params;
+    const leaveId = parseInt(id);
 
     const comment = await prisma.leaveComment.create({
       data: {
-        leaveId: parseInt(params.id),
+        leaveId,
         userId: parseInt(session.user.id),
         text,
       },
