@@ -71,13 +71,11 @@ export default function EmployeePayrollPage() {
 
       <div className="flex-1">
         <section className="p-6 max-w-4xl mx-auto space-y-6">
-          {/* Header */}
           <div>
             <h1 className="text-3xl font-bold mb-2">My Payroll</h1>
             <p className="text-gray-400">View your salary and payment details</p>
           </div>
 
-          {/* Month Selector */}
           <div>
             <label className="block text-sm text-gray-400 mb-2">Select Period</label>
             <select
@@ -101,14 +99,12 @@ export default function EmployeePayrollPage() {
 
           {currentPayroll && (
             <>
-              {/* Summary Cards */}
               <div className="grid md:grid-cols-3 gap-4">
                 <StatCard title="Period" value={month} />
                 <StatCard title="Net Salary" value={`₹${currentPayroll.totalSalary.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} />
                 <StatCard title="Status" value={<StatusBadge status={currentPayroll.status} />} />
               </div>
 
-              {/* Attendance Info */}
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
                 <h2 className="text-xl font-bold mb-4">Attendance Information</h2>
                 <div className="grid md:grid-cols-4 gap-4">
@@ -131,7 +127,6 @@ export default function EmployeePayrollPage() {
                 </div>
               </div>
 
-              {/* Salary Breakdown */}
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
                 <h2 className="text-xl font-bold mb-4">Salary Breakdown</h2>
                 <div className="space-y-4">
@@ -154,7 +149,6 @@ export default function EmployeePayrollPage() {
                 </div>
               </div>
 
-              {/* Total Summary */}
               <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-6">
                 <div className="flex items-center justify-between">
                   <div>

@@ -117,10 +117,8 @@ export default function EmployeeProfilePage() {
 
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
-      {/* Sidebar */}
       <EmployeeSide screen="profile" />
 
-      {/* Main Content */}
       <div className="flex-1">
         <section className="p-6 max-w-3xl mx-auto">
           <div className="mb-6">
@@ -128,7 +126,6 @@ export default function EmployeeProfilePage() {
             <p className="text-gray-400">View and update your profile information</p>
           </div>
 
-          {/* Messages */}
           {error && (
             <div className="mb-6 bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg">
               {error}
@@ -142,7 +139,6 @@ export default function EmployeeProfilePage() {
           )}
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-8 space-y-6">
-            {/* Read-only fields */}
             <div className="grid md:grid-cols-2 gap-6 pb-6 border-b border-white/10">
               <div>
                 <label className="text-sm text-gray-400">Employee ID</label>
@@ -154,8 +150,6 @@ export default function EmployeeProfilePage() {
               </div>
             </div>
 
-            {/* Editable fields */}
-            {/* Name */}
             <InputField
               label="Full Name"
               name="name"
@@ -163,7 +157,6 @@ export default function EmployeeProfilePage() {
               onChange={handleChange}
             />
 
-            {/* Address */}
             <InputField
               label="Address"
               name="address"
@@ -172,7 +165,6 @@ export default function EmployeeProfilePage() {
               textarea
             />
 
-            {/* Phone */}
             <InputField
               label="Phone Number"
               name="phone"
@@ -180,7 +172,6 @@ export default function EmployeeProfilePage() {
               onChange={handleChange}
             />
 
-            {/* Action */}
             <div className="flex justify-end pt-4">
               <button
                 onClick={handleSave}

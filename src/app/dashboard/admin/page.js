@@ -44,7 +44,6 @@ export default function AdminDashboard() {
         const pending = allLeaves.filter((l) => l.status === "PENDING");
         setPendingLeaves(pending.slice(0, 5)); // Show 5 most recent pending
 
-        // Calculate working days
         const year = new Date().getFullYear();
         const startDate = new Date(year, 0, 1);
         const endDate = new Date();
@@ -57,7 +56,6 @@ export default function AdminDashboard() {
           }
         }
 
-        // Calculate average attendance
         let totalPresent = 0;
         employees.forEach((emp) => {
           totalPresent += emp.presentDays || 0;
@@ -124,7 +122,6 @@ export default function AdminDashboard() {
             <p className="text-gray-400">Company-wide attendance and leave overview</p>
           </div>
 
-          {/* Key Stats */}
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             <StatCard
               title="Total Employees"
@@ -143,7 +140,6 @@ export default function AdminDashboard() {
             />
           </div>
 
-          {/* Attendance Overview */}
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             <StatCard
               title="Total Leaves"
@@ -154,7 +150,6 @@ export default function AdminDashboard() {
             <StatCard title="Working Days Total" value={stats.workingDaysTotal} />
           </div>
 
-          {/* Pending Leaves Section */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold">Pending Leave Approvals</h2>
@@ -193,7 +188,6 @@ export default function AdminDashboard() {
             )}
           </div>
 
-          {/* Employees Overview */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold">Employee Overview</h2>

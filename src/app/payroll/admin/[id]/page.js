@@ -109,7 +109,6 @@ export default function EditPayrollPage({ params }) {
 
       <div className="flex-1">
         <section className="p-6 max-w-4xl mx-auto">
-          {/* Header */}
           <div className="mb-8">
             <button
               onClick={() => router.push("/payroll/admin")}
@@ -123,7 +122,6 @@ export default function EditPayrollPage({ params }) {
             </p>
           </div>
 
-          {/* Employee Info */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-6">
             <h2 className="text-xl font-bold mb-4">Employee Information</h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -146,7 +144,6 @@ export default function EditPayrollPage({ params }) {
             </div>
           </div>
 
-          {/* Attendance Summary */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-6">
             <h2 className="text-xl font-bold mb-4">Attendance Summary</h2>
             <div className="grid md:grid-cols-4 gap-4">
@@ -171,7 +168,6 @@ export default function EditPayrollPage({ params }) {
             </div>
           </div>
 
-          {/* Salary Details */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-6">
             <h2 className="text-xl font-bold mb-4">Salary Details</h2>
             <div className="space-y-4">
@@ -244,7 +240,6 @@ export default function EditPayrollPage({ params }) {
             </div>
           </div>
 
-          {/* Salary Summary */}
           <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-6 mb-6">
             <h2 className="text-xl font-bold mb-4">Total Salary Summary</h2>
             <div className="space-y-2 text-lg">
@@ -269,7 +264,6 @@ export default function EditPayrollPage({ params }) {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-4 justify-end">
             <button
               onClick={() => router.push("/payroll/admin")}

@@ -107,7 +107,6 @@ export default function EmployeeDashboard() {
             <p className="text-gray-400">Here's your attendance and leave overview</p>
           </div>
 
-          {/* Profile Card */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-6">
             <div className="flex items-center justify-between">
               <div>
@@ -125,7 +124,6 @@ export default function EmployeeDashboard() {
             </div>
           </div>
 
-          {/* Attendance Stats */}
           <div className="mb-6">
             <h2 className="text-2xl font-bold mb-4">Attendance Summary</h2>
             <div className="grid md:grid-cols-4 gap-4">
@@ -139,7 +137,6 @@ export default function EmployeeDashboard() {
             </div>
           </div>
 
-          {/* Leave Stats */}
           <div className="mb-6">
             <h2 className="text-2xl font-bold mb-4">Leave Summary</h2>
             <div className="grid md:grid-cols-4 gap-4">
@@ -162,7 +159,6 @@ export default function EmployeeDashboard() {
             </div>
           </div>
 
-          {/* Recent Leaves */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h2 className="text-2xl font-bold mb-4">Recent Leave Requests</h2>
             {recentLeaves.length === 0 ? (

@@ -105,7 +105,6 @@ export default function AdminPayrollPage() {
 
       <div className="flex-1">
         <section className="p-6 max-w-7xl mx-auto space-y-6">
-          {/* Header */}
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold mb-1">Payroll Management</h1>
@@ -119,7 +118,6 @@ export default function AdminPayrollPage() {
             </button>
           </div>
 
-          {/* Create Form */}
           {showCreateForm && (
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
               <h2 className="text-xl font-bold mb-4">Create New Payroll Entry</h2>
@@ -193,7 +191,6 @@ export default function AdminPayrollPage() {
             </div>
           )}
 
-          {/* Month/Year Selector */}
           <div className="flex gap-4">
             <div>
               <label className="block text-sm text-gray-400 mb-1">Month</label>
@@ -226,7 +223,6 @@ export default function AdminPayrollPage() {
             </div>
           </div>
 
-          {/* Stats */}
           <div className="grid md:grid-cols-4 gap-4">
             <StatCard title="Period" value={monthName} />
             <StatCard title="Payroll Entries" value={payroll.length} />
@@ -234,7 +230,6 @@ export default function AdminPayrollPage() {
             <StatCard title="Avg Salary" value={`₹${(totalPayout / (payroll.length || 1)).toLocaleString(undefined, { maximumFractionDigits: 0 })}`} />
           </div>
 
-          {/* Table */}
           <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
             {payroll.length === 0 ? (
               <div className="p-6 text-center text-gray-400">

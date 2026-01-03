@@ -1,7 +1,7 @@
 export default function SignUp() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex items-center justify-center px-6">
-      {/* background glow */}
+    
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/10 to-cyan-600/20 blur-3xl" />
 
       <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl">

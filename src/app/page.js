@@ -39,12 +39,7 @@ export default function Home() {
             >
               Get Started
             </a>}
-            {/* <a
-              href="#features"
-              className="px-8 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition"
-            >
-              Explore Features
-            </a> */}
+          
           </div>
         </div>
       </section>
