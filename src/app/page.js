@@ -1,4 +1,10 @@
+'use client';
+
+import { useSession } from "next-auth/react";
+
 export default function Home() {
+  const {data: session} = useSession();
+
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200">
       <section className="relative overflow-hidden">
@@ -22,12 +28,17 @@ export default function Home() {
           </p>
 
           <div className="flex gap-4">
-            <a
+            {session?.user ? <a
+              href={`/dashboard/${session.user.role === 'ADMIN' ? 'admin' : 'employee'}`}
+              className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
+            >
+              Launch DayFlow
+            </a> : <a
               href="signin"
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-semibold transition shadow-lg shadow-indigo-600/30"
+              className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
             >
               Get Started
-            </a>
+            </a>}
             {/* <a
               href="#features"
               className="px-8 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition"
@@ -117,12 +128,17 @@ export default function Home() {
         <p className="text-gray-400 mb-8">
           Focus on people let DayFlow handle the process.
         </p>
-        <a
-          href="signin"
+        {session?.user ? <a
+          href={`/dashboard/${session.user.role === 'ADMIN' ? 'admin' : 'employee'}`}
           className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
         >
           Launch DayFlow
-        </a>
+        </a> : <a
+          href="signin"
+          className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
+        >
+          Get Started
+        </a>}
       </section>
 
       <footer className="py-8 text-center text-sm text-gray-500 border-t border-white/10">
