@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 
 export async function POST(request) {
   try {
-    const { name, email, password, employeeId } = await request.json();
+    const { name, email, password, employeeId, role } = await request.json();
 
     const existingUser = await prisma.user.findUnique({
       where: { email },
@@ -17,6 +17,24 @@ export async function POST(request) {
       );
     }
 
+    if (role !== "ADMIN" && role !== "EMPLOYEE") {
+      return NextResponse.json(
+        { error: "Invalid role specified" },
+        { status: 400 }
+      );
+    }
+
+    const existingEmployeeId = await prisma.user.findUnique({
+      where: { employeeId },
+    });
+
+    if (existingEmployeeId) {
+      return NextResponse.json(
+        { error: "Employee ID already exists" },
+        { status: 400 }
+      );
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
@@ -25,7 +43,7 @@ export async function POST(request) {
         email,
         password: hashedPassword,
         employeeId: employeeId || `EMP${Date.now()}`,
-        role: "EMPLOYEE",
+        role: role || "EMPLOYEE",
       },
     });
 

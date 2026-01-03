@@ -58,9 +58,14 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <Link href="signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
-              Login
-            </Link>
+            <div className="flex items-center justify-between gap-4">
+              <Link href="signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
+                Login
+              </Link>
+              <Link href="signin" className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 transition">
+                Sign Up
+              </Link>
+            </div>
           )}
         </div>
       </div>
