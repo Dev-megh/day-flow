@@ -3,12 +3,7 @@ import AdminSide from "@/components/AdminSide";
 export default function LeaveAdminViewPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
-      
-     <AdminSide/>
-
       <div className="flex-1">
-        <Header title="Leave Request Details" />
-
         <section className="p-6 max-w-4xl mx-auto space-y-6">
 
           <Card title="Employee Information">
@@ -37,14 +32,6 @@ export default function LeaveAdminViewPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-function Header({ title }) {
-  return (
-    <header className="px-6 py-4 border-b border-white/10 bg-white/5">
-      <h1 className="text-xl font-semibold">{title}</h1>
-    </header>
   );
 }
 

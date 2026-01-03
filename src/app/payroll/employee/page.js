@@ -10,8 +10,6 @@ export default function EmployeePayrollPage() {
 
       {/* Content */}
       <div className="flex-1">
-        <Header title="My Payroll" />
-
         <section className="p-6 max-w-4xl mx-auto space-y-8">
           <div className="grid sm:grid-cols-2 gap-6">
             <StatCard title="Month" value="April 2026" />
@@ -38,14 +36,6 @@ export default function EmployeePayrollPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-function Header({ title }) {
-  return (
-    <header className="px-6 py-4 border-b border-white/10 bg-white/5">
-      <h1 className="text-xl font-semibold">{title}</h1>
-    </header>
   );
 }
 

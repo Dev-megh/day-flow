@@ -9,8 +9,6 @@ export default function AdminPayrollPage() {
 
       {/* Content */}
       <div className="flex-1">
-        <Header title="Payroll Management" />
-
         <section className="p-6 max-w-6xl mx-auto space-y-8">
           {/* Stats */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -53,16 +51,6 @@ export default function AdminPayrollPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-/* ---------- Components ---------- */
-
-function Header({ title }) {
-  return (
-    <header className="px-6 py-4 border-b border-white/10 bg-white/5">
-      <h1 className="text-xl font-semibold">{title}</h1>
-    </header>
   );
 }
 
