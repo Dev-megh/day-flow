@@ -1,22 +1,9 @@
-import NavItem from "@/components/NavItem";
+import AdminSide from "@/components/AdminSide";
 
 export default function LeaveAdminListPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
-      <aside className="w-64 bg-white/5 border-r border-white/10 hidden md:block">
-        <div className="p-6 text-2xl font-bold text-indigo-400">
-          DayFlow
-        </div>
-
-        <nav className="px-4 space-y-2">
-          <NavItem label="Dashboard" />
-          <NavItem label="Employees" />
-          <NavItem label="Attendance" />
-          <NavItem label="Leaves" active />
-          <NavItem label="Payroll" />
-        </nav>
-      </aside>
-
+      <AdminSide />
       <div className="flex-1">
         <Header title="Leave Requests" />
 
@@ -60,7 +47,6 @@ export default function LeaveAdminListPage() {
     </main>
   );
 }
-
 
 function Header({ title }) {
   return (
