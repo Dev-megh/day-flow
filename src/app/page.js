@@ -1,7 +1,6 @@
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200">
-      {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/10 to-cyan-600/20 blur-3xl" />
 
@@ -39,17 +38,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES */}
       <section id="features" className="py-24 px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
           Everything You Need in One Platform
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <Feature
-            title="Employee Management"
-            desc="Organize employee data, roles, departments, and status in one secure system."
-          />
           <Feature
             title="Attendance & Leave"
             desc="Track daily attendance and manage leave approvals with ease."
@@ -62,20 +56,11 @@ export default function Home() {
             title="Role-Based Access"
             desc="Separate dashboards for Admins, HR, and Employees."
           />
-          <Feature
-            title="Secure by Design"
-            desc="Authentication, authorization, and data protection built-in."
-          />
-          <Feature
-            title="Fast & Scalable"
-            desc="Built on modern architecture designed to grow with your company."
-          />
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
       <section className="bg-white/5 border-y border-white/10 py-24 px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
           How DayFlow Works
         </h2>
 
@@ -98,7 +83,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ROLES */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
           Designed for Every Role
@@ -126,13 +110,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 px-6 text-center bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border-t border-white/10">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
           Ready to Streamline Your HR?
         </h2>
         <p className="text-gray-400 mb-8">
-          Focus on people — let DayFlow handle the process.
+          Focus on people let DayFlow handle the process.
         </p>
         <a
           href="/login"
@@ -142,15 +125,12 @@ export default function Home() {
         </a>
       </section>
 
-      {/* FOOTER */}
       <footer className="py-8 text-center text-sm text-gray-500 border-t border-white/10">
         © {new Date().getFullYear()} DayFlow HRMS. Built for modern teams.
       </footer>
     </main>
   );
 }
-
-/* ---------- Components ---------- */
 
 function Feature({ title, desc }) {
   return (
