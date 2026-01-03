@@ -44,6 +44,8 @@ export async function POST(request) {
         password: hashedPassword,
         employeeId: employeeId || `EMP${Date.now()}`,
         role: role || "EMPLOYEE",
+        phone: "",
+        address: "",
       },
     });
 
