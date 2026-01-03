@@ -1,0 +1,72 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  EMPLOYEE
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  HALF_DAY
+  LEAVE
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum LeaveType {
+  PAID
+  SICK
+  UNPAID
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  employeeId  String       @unique
+  name        String
+  email       String       @unique
+  password    String
+  role        Role
+  attendances Attendance[]
+  leaves      Leave[]
+  payroll     Payroll?
+}
+
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  date      DateTime
+  checkIn   DateTime?
+  checkOut  DateTime?
+  status    AttendanceStatus
+}
+
+model Leave {
+  id      Int         @id @default(autoincrement())
+  userId  Int
+  user    User        @relation(fields: [userId], references: [id])
+  type    LeaveType
+  from    DateTime
+  to      DateTime
+  status  LeaveStatus
+  reason  String?
+}
+
+model Payroll {
+  id      Int     @id @default(autoincrement())
+  userId  Int     @unique
+  user    User    @relation(fields: [userId], references: [id])
+  salary  Int
+}
