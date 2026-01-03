@@ -24,7 +24,7 @@ export default function Navbar() {
               <NavLink href="/dashboard/employee" active={pathname.startsWith("/dashboard/employee")}>
                 Dashboard
               </NavLink>
-              <NavLink href="/attendance" active={pathname.startsWith("/attendance")}>
+              <NavLink href="/attendance/employee" active={pathname.startsWith("/attendance")}>
                 Attendance
               </NavLink>
               <NavLink href="/leave/apply" active={pathname.startsWith("/leave/apply")}>
@@ -36,7 +36,7 @@ export default function Navbar() {
           {isAdmin && (
             <>
               <NavLink href="/dashboard/admin">Admin</NavLink>
-              <NavLink href="/attendance">Attendance</NavLink>
+              <NavLink href="/attendance/admin">Attendance</NavLink>
               <NavLink href="/leave/admin/view">Leaves</NavLink>
               <NavLink href="/admin/employees">Employees</NavLink>
             </>

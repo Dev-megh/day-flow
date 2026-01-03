@@ -10,7 +10,7 @@ function AdminSide() {
 
             <NavItem label="Employees" href="/dashboard/admin" />
 
-            <NavItem label="Attendance" href="/attendance" />
+            <NavItem label="Attendance" href="/attendance/admin" />
 
             <NavItem label="Leaves" href="/leave/admin/list" />
 
