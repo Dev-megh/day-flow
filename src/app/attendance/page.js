@@ -12,7 +12,6 @@ export default function AdminAttendancePage() {
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 px-6 py-14">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4">
           <div>
             <h1 className="text-3xl font-bold">Team Attendance</h1>
@@ -21,7 +20,6 @@ export default function AdminAttendancePage() {
             </p>
           </div>
 
-          {/* Employee Selector (Admin) */}
           <select className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm">
             <option>All Employees</option>
             <option>John Doe</option>
@@ -30,10 +28,7 @@ export default function AdminAttendancePage() {
           </select>
         </div>
 
-        {/* Heatmap Card */}
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 overflow-hidden">
-          
-          {/* Month Labels */}
           <div className="flex text-xs text-gray-400 mb-2 pl-10">
             {MONTH_NAMES.map((m) => (
               <div key={m} className="w-[72px]">{m}</div>
@@ -41,7 +36,6 @@ export default function AdminAttendancePage() {
           </div>
 
           <div className="flex">
-            {/* Day Labels */}
             <div className="flex flex-col text-xs text-gray-400 mr-3">
               {WEEK_DAYS.map((day) => (
                 <div key={day} className="h-[14px] mb-[6px]">
@@ -50,7 +44,6 @@ export default function AdminAttendancePage() {
               ))}
             </div>
 
-            {/* Scrollable Grid */}
             <div className="overflow-x-auto">
               <div
                 className="grid grid-flow-col gap-[6px]"
@@ -67,7 +60,6 @@ export default function AdminAttendancePage() {
             </div>
           </div>
 
-          {/* Legend */}
           <div className="flex items-center justify-end mt-6 text-xs text-gray-400 gap-2">
             <span>Absent</span>
             <Legend color="bg-white/10" />
@@ -78,7 +70,6 @@ export default function AdminAttendancePage() {
           </div>
         </div>
 
-        {/* Admin Summary */}
         <div className="grid md:grid-cols-4 gap-6 mt-10">
           <Stat title="Employees" value="24" />
           <Stat title="Working Days" value="288" />
@@ -86,7 +77,6 @@ export default function AdminAttendancePage() {
           <Stat title="Leaves This Year" value="134" />
         </div>
 
-        {/* Insights */}
         <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
           <h3 className="text-xl font-semibold mb-4">
             Attendance Insights
@@ -103,14 +93,12 @@ export default function AdminAttendancePage() {
   );
 }
 
-/* ---------- Helpers ---------- */
-
 function getColor(level) {
   switch (level) {
-    case 0: return "bg-white/10";      // Absent
-    case 1: return "bg-indigo-900";    // Half day
-    case 2: return "bg-indigo-700";    // Present
-    case 3: return "bg-indigo-500";    // Overtime
+    case 0: return "bg-white/10";
+    case 1: return "bg-indigo-900";
+    case 2: return "bg-indigo-700";
+    case 3: return "bg-indigo-500";
     default: return "bg-white/10";
   }
 }
@@ -120,9 +108,8 @@ function generateYearAttendance(year) {
   const date = new Date(year, 0, 1);
 
   while (date.getFullYear() === year) {
-    const day = date.getDay(); // 0 = Sun, 6 = Sat
+    const day = date.getDay();
 
-    // Mon–Sat only
     if (day !== 0) {
       const level = Math.floor(Math.random() * 4);
       result.push({
@@ -140,8 +127,6 @@ function generateYearAttendance(year) {
 
   return result;
 }
-
-/* ---------- Components ---------- */
 
 function Legend({ color }) {
   return <div className={`w-4 h-4 rounded-sm ${color}`} />;
