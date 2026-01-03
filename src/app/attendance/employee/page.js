@@ -17,18 +17,11 @@ export default function EmployeeAttendancePage() {
         <section className="p-6 max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4">
             <div>
-              <h1 className="text-3xl font-bold">Team Attendance</h1>
+              <h1 className="text-3xl font-bold">My Attendance</h1>
               <p className="text-gray-400">
-                Yearly attendance overview (Admin view)
+                Yearly attendance overview
               </p>
             </div>
-
-            <select className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm">
-              <option>All Employees</option>
-              <option>John Doe</option>
-              <option>Jane Smith</option>
-              <option>Rahul Patel</option>
-            </select>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 overflow-hidden">
@@ -74,21 +67,32 @@ export default function EmployeeAttendancePage() {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6 mt-10">
-            <Stat title="Employees" value="24" />
             <Stat title="Working Days" value="288" />
+            <Stat title="Days Worked" value="283" />
             <Stat title="Avg Attendance" value="92%" />
-            <Stat title="Leaves This Year" value="134" />
+            <Stat title="Leaves This Year" value="5" />
           </div>
 
           <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 className="text-xl font-semibold mb-4">
-              Attendance Insights
-            </h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li>• Fridays show the highest absentee rate</li>
-              <li>• Attendance peaks during Q1 & Q3</li>
-              <li>• Overtime mostly logged by Engineering</li>
-            </ul>
+            <h2 className="text-2xl font-bold mb-6">Mark Attendance</h2>
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <button
+                className="px-6 py-3 rounded-xl font-semibold transition
+                bg-green-500/10 text-green-400
+                border border-green-500/20
+                hover:bg-green-500/20"
+              >
+                Check In
+              </button>
+              <button
+                className="px-6 py-3 rounded-xl font-semibold transition
+                bg-red-500/10 text-red-400
+                border border-red-500/20
+                hover:bg-red-500/20"
+              >
+                Check Out
+              </button>
+            </div>
           </div>
         </section>
       </div>
