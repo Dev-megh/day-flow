@@ -1,3 +1,4 @@
+import NavItems from "../../../components/NavItems";
 export default function EmployeeDashboardPage() {
   return (
     <main className="min-h-screen bg-[#0B0F1A] text-gray-200 flex">
@@ -5,10 +6,10 @@ export default function EmployeeDashboardPage() {
         <div className="p-6 text-2xl font-bold text-indigo-400">DayFlow</div>
 
         <nav className="px-4 space-y-2">
-          <NavItem label="Dashboard" active />
-          <NavItem label="My Attendance" />
-          <NavItem label="My Leaves" />
-          <NavItem label="Profile" />
+          <NavItems label="Dashboard" active  href="/dashboard/employee"/>
+          <NavItems label="My Attendance" href="/attendance" />
+          <NavItems label="My Leaves" href="/leave/apply" />
+          <NavItems label="Profile" href=""/>
         </nav>
       </aside>
 

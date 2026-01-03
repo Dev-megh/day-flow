@@ -49,7 +49,7 @@ export default function Navbar() {
             <>
               <NavLink href="/dashboard/admin">Admin</NavLink>
               <NavLink href="/attendance">Attendance</NavLink>
-              <NavLink href="/admin/leaves">Leaves</NavLink>
+              <NavLink href="/leave/admin/view">Leaves</NavLink>
               <NavLink href="/admin/employees">Employees</NavLink>
             </>
           )}

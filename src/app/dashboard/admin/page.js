@@ -8,15 +8,13 @@ export default function AdminDashboardPage() {
         <nav className="px-4 space-y-2">
           <NavItems label="Dashboard" href="/dashboard/admin" active />
 
-          <NavItems label="Employees" href="/dashboard/employee" />
+          <NavItems label="Employees" href="/dashboard/admin" />
 
           <NavItems label="Attendance" href="/attendance" />
 
           <NavItems label="Leaves" href="/leave/admin/list" />
 
-          <NavItems label="Payroll" href="/payroll" />
-
-          <NavItems label="Settings" href="/settings" />
+          <NavItems label="Payroll" href="/payroll/admin" />
         </nav>
       </aside>
 
