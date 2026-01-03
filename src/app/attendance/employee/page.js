@@ -3,8 +3,8 @@
 import { useAttendance } from "../../../providers/AttendanceProvider";
 import EmployeeSide from "../../../components/EmployeeSide";
 import { useState, useEffect } from "react";
+const WEEK_DAYS = ["Sat", "Mon", "Tue", "Wed", "Thu", "Fri"];
 
-const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTH_NAMES = [
   "Jan",
   "Feb",

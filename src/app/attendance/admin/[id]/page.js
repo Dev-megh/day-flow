@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import AdminSide from "@/components/AdminSide";
+const WEEK_DAYS = ["Sat", "Mon", "Tue", "Wed", "Thu", "Fri"];
 
-const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTH_NAMES = [
   "Jan",
   "Feb",
