@@ -120,27 +120,6 @@ export default function Home() {
           />
         </div>
       </section>
-
-      <section className="py-20 px-6 text-center bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border-t border-white/10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Ready to Streamline Your HR?
-        </h2>
-        <p className="text-gray-400 mb-8">
-          Focus on people let DayFlow handle the process.
-        </p>
-        {session?.user ? <a
-          href={`/dashboard/${session.user.role === 'ADMIN' ? 'admin' : 'employee'}`}
-          className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
-        >
-          Launch DayFlow
-        </a> : <a
-          href="signin"
-          className="inline-block bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-600/30 transition"
-        >
-          Get Started
-        </a>}
-      </section>
-
       <footer className="py-8 text-center text-sm text-gray-500 border-t border-white/10">
         © {new Date().getFullYear()} DayFlow HRMS. Built for modern teams.
       </footer>
